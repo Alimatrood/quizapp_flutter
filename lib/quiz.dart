@@ -31,13 +31,21 @@ class _QuizState extends State<Quiz> {
     }
   }
 
+  void restartQuiz() {
+    setState(() {
+      activeScreen = 'start-screen';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget screenWidget = HomeScreen(changeScreen);
     if (activeScreen == 'questions-screen') {
       screenWidget = QuestionsScreen(chooseAnswer);
     } else if (activeScreen == 'result-screens') {
-      screenWidget = ResultsScreen(selectedAnswers);
+      screenWidget = ResultsScreen(
+        selectedAnswers,
+      );
     }
     return MaterialApp(
       title: 'Flutter Demo',
